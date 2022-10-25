@@ -170,21 +170,15 @@ pychain = setup()
 
 # @TODO:
 # Delete the `input_data` variable from the Streamlit interface.
-input_data = st.text_input("Block Data")
-
-# @TODO:
-# Add an input area where you can get a value for `sender` from the user.
-prev_block = pychain.chain[-1]
-prev_block_hash = prev_block.hash_block()
-new_block = Block(data=input_data, creator_id = 42, prev_hash=prev_block_hash)
+block_data_frame = st.text_input("Block Data")
 
 # @TODO:
 # Add an input area where you can get a value for `receiver` from the user.
-# YOUR CODE HERE
+receiver = st.text_input("Welcome To Money Talks Edu")
 
 # @TODO:
 # Add an input area where you can get a value for `amount` from the user.
-# YOUR CODE HERE
+amount = st.text_input("Transaction Amount")
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
@@ -196,6 +190,7 @@ if st.button("Add Block"):
     # and `amount` values
     new_block = Block(
         data=input_data,
+        record=Record(sender, receiver, amount),
         creator_id=42,
         prev_hash=prev_block_hash
     )
