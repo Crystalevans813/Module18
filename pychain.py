@@ -53,9 +53,9 @@ import hashlib
 
 @dataclass
 class Record:
-      sender: str
-    receiver: str
-    amount: float
+    sender:str
+    receiver:str
+    amount:float
 
 ################################################################################
 # Step 2:
@@ -73,7 +73,7 @@ class Block:
 
     # @TODO
     # Rename the `data` attribute to `record`, and set the data type to `Record`
-   record: Record
+    record: Record
 
     creator_id: int
     prev_hash: str = "0"
@@ -170,11 +170,11 @@ pychain = setup()
 
 # @TODO:
 # Delete the `input_data` variable from the Streamlit interface.
-block_data_frame = st.text_input("Block Data")
+sender = st.text_input("Input Sender Information")
 
 # @TODO:
 # Add an input area where you can get a value for `receiver` from the user.
-receiver = st.text_input("Welcome To Money Talks Edu")
+receiver = st.text_input("Input Receiver Information")
 
 # @TODO:
 # Add an input area where you can get a value for `amount` from the user.
@@ -189,7 +189,7 @@ if st.button("Add Block"):
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
     new_block = Block(
-        data=input_data,
+        #data=input_data,
         record=Record(sender, receiver, amount),
         creator_id=42,
         prev_hash=prev_block_hash
